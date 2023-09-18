@@ -17,9 +17,9 @@ const getLocaleFromHeaders = (request) => {
     return match(languages, Object.keys(locales), defaultLocale)
 }
 
-const getLocaleFromCookie = (request) => {
+const getCookie = (request, key) => {
     const cookiesStore = request.cookies
-    return cookiesStore.get('lang')
+    return cookiesStore.get(key)
 }
 
 const setLocaleToCookie = (request, response) => {
@@ -28,9 +28,9 @@ const setLocaleToCookie = (request, response) => {
     return response
 }
 
-export const middleware = (request) => {
-    const lang = getLocaleFromCookie(request)
+export const middleware = async (request) => {
     const response = NextResponse.next()
+    const lang = getCookie(request, 'lang')
     if (!lang) {
         return setLocaleToCookie(request, response)
     }

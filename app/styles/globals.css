@@ -8,7 +8,21 @@
         @apply h-full;
     }
 
+    html {
+        @apply bg-marvel-black bg-[url('/background.jpg')] bg-no-repeat bg-center bg-fixed bg-cover;
+    }
+
     body {
-        @apply flex flex-col;
+        @apply flex flex-col text-white;
+    }
+
+    .inferior-clip {
+        clip-path: polygon(97% 60%, 80% 60%, 80% 5%, 20% 5%, 20% 60%, 3% 60%, 50% 95%);
+        -webkit-clip-path: polygon(97% 60%, 80% 60%, 80% 5%, 20% 5%, 20% 60%, 3% 60%, 50% 95%);
+    }
+
+    .superior-clip {
+        clip-path: polygon(97% 40%, 80% 40%, 80% 95%, 20% 95%, 20% 40%, 3% 40%, 50% 5%);
+        -webkit-clip-path: polygon(97% 40%, 80% 40%, 80% 95%, 20% 95%, 20% 40%, 3% 40%, 50% 5%);
     }
 }

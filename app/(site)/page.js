@@ -1,6 +1,6 @@
 import HomeContainer from '../containers/Home/HomeContainer'
 
-const HomePage = () => {
+const HomePage = async () => {
     return <HomeContainer />
 }
 

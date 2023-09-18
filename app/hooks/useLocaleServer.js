@@ -2,9 +2,9 @@ import { cookies } from 'next/headers'
 import locales from '@/app/locales'
 import { defaultLocale } from '@/middleware'
 
-const Translate = ({ children }) => {
+const useLocaleServer = () => {
     const lang = cookies().get('lang')?.value ?? defaultLocale
-    return locales[lang][children]
+    return locales[lang]
 }
 
-export default Translate
+export default useLocaleServer
