@@ -5,7 +5,7 @@ const nextConfig = {
     },
     reactStrictMode: false,
     images: {
-        domains: ['cdn.marvel.com', 'comicvine.gamespot.com']
+        domains: ['cdn.marvel.com']
     }
 }
 

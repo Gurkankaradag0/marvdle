@@ -132,9 +132,9 @@ const ClueItem = ({ tooltipText, clueTextDisabled, clueText, clueCount }) => {
                 <canvas
                     id='clue-img'
                     ref={canvasRef}
-                    width='480px'
-                    height='270px'
-                    className='w-[90%] my-0 mx-auto rounded-md border-solid border-2 border-marvel-red'
+                    width='160px'
+                    height='240px'
+                    className=' my-0 mx-auto rounded-md border-solid border-2 border-marvel-gray/[0.5] hover:border-marvel-gray transition-colors overflow-hidden'
                     style={{
                         imageRendering: 'pixelated'
                     }}

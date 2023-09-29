@@ -15,9 +15,7 @@ const getCharacterDetail = async (character) => {
 
 const getClue = async () => {
     const response = await fetch(`${process.env.API_ENDPOINT}/dailycharacter/clue`, {
-        next: {
-            revalidate: 600
-        }
+        cache: 'no-store'
     })
 
     return response.json()
