@@ -34,8 +34,8 @@ const GameList = ({ yesterdayPlacement }) => {
     if (loading || characters.length === 0) return null
     return (
         <div className='w-3/4 mb-8'>
-            <div className='flex flex-col justify-center items-center scroller max-[600px]:overflow-x-scroll max-[600px]:w-[125%] max-[600px]:-ml-[12.5%]'>
-                <div className='w-[165%] max-[600px]:ml-[65%]'>
+            <div className='flex flex-col justify-center items-center scroller w-[110%] -ml-[5%] max-[678px]:overflow-x-scroll max-[678px]:w-[125%] max-[678px]:-ml-[12.5%]'>
+                <div className='w-[165%] max-[678px]:ml-[65%]'>
                     <div className='flex flex-wrap w-full'>
                         {GAME_ALIGNMENTS.map((alignment, key) => (
                             <Tooltip.Item
@@ -50,7 +50,7 @@ const GameList = ({ yesterdayPlacement }) => {
                         ))}
                     </div>
                 </div>
-                <ul className='flex flex-col w-[165%] max-[600px]:ml-[65%] gap-2'>
+                <ul className='flex flex-col w-[165%] max-[678px]:ml-[65%] gap-2'>
                     {characters.map((character, key) => (
                         <li
                             key={key}
