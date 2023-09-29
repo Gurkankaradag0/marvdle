@@ -1,7 +1,7 @@
 import { NextResponse } from 'next/server'
 import Negotiator from 'negotiator'
 import { match } from '@formatjs/intl-localematcher'
-import locales from './app/locales'
+import locales from '@/locales'
 
 export const defaultLocale = 'en'
 
@@ -29,14 +29,18 @@ const setLocaleToCookie = (request, response) => {
 }
 
 export const middleware = async (request) => {
-    const response = NextResponse.next()
+    let response = NextResponse.next()
     const lang = getCookie(request, 'lang')
+
     if (!lang) {
-        return setLocaleToCookie(request, response)
+        try {
+            response = setLocaleToCookie(request, response)
+        } catch (e) {}
     }
+
     return response
 }
 
 export const config = {
-    matcher: ['/((?!_next|api|favicon.ico).*)']
+    matcher: ['/((?!_next|api|favicon.ico|background.jpg|logo.png).*)']
 }

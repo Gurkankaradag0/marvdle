@@ -1,22 +1,76 @@
-import { createSlice } from '@reduxjs/toolkit'
+import { getCharacterDetail } from '@/actions/game'
+import { getLocalStorage, setLocalStorage } from '@/actions/localStorage'
+import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
+
+export const _getCharacters = createAsyncThunk('game/getCharacters', async () => {
+    const characters = getLocalStorage('characters') || []
+    if (characters.length === 0) return false
+    const response = await getCharacterDetail(characters)
+    return response
+})
+
+const initialStats = {
+    gamesWon: 0,
+    averageGuesses: 0,
+    oneShots: 0,
+    oneShotPercent: 0,
+    currentStreak: 0,
+    maxStreak: 0,
+    labels: [],
+    data: []
+}
 
 const initialState = {
     characters: [],
-    placement: 0
+    loading: true,
+    gamenumero: getLocalStorage('gamenumero') || 0,
+    placement: getLocalStorage('placement') || 0,
+    stats: getLocalStorage('stats') || initialStats,
+    confetti: getLocalStorage('confetti') ?? true
 }
 
 const game = createSlice({
     name: 'game',
     initialState,
     reducers: {
-        _addCharacters: (store, action) => {
-            store.characters = [...action.payload, ...store.characters]
+        _setGameNumero: (state, action) => {
+            state.gamenumero = action.payload
+            state.characters = []
+            state.placement = 0
+            state.loading = false
+            state.confetti = true
+            setLocalStorage('characters', state.characters)
+            setLocalStorage('confetti', state.confetti)
+            setLocalStorage('placement', state.placement)
+            setLocalStorage('gamenumero', state.gamenumero)
         },
-        _setPlacement: (store, action) => {
-            store.placement = action.payload
+        _addCharacters: (state, action) => {
+            state.characters = [...action.payload, ...state.characters]
+            setLocalStorage(
+                'characters',
+                state.characters.map((character) => character.name)
+            )
+        },
+        _setPlacement: (state, action) => {
+            state.placement = action.payload
+            setLocalStorage('placement', state.placement)
+        },
+        _setConfetti: (state, action) => {
+            state.confetti = action.payload
+            setLocalStorage('confetti', state.confetti)
+        },
+        _setStats: (state, action) => {
+            state.stats = action.payload || initialStats
+            setLocalStorage('stats', state.stats)
         }
+    },
+    extraReducers: (builder) => {
+        builder.addCase(_getCharacters.fulfilled, (state, action) => {
+            action.payload && (state.characters = action.payload.reverse())
+            state.loading = false
+        })
     }
 })
 
-export const { _addCharacters, _setPlacement } = game.actions
+export const { _setGameNumero, _addCharacters, _setPlacement, _setConfetti, _setStats } = game.actions
 export default game.reducer

@@ -1,6 +1,6 @@
 'use client'
 import { useState, useEffect } from 'react'
-import locales from '@/app/locales'
+import locales from '@/locales'
 
 const useLocaleClient = () => {
     const [lang, setLang] = useState('')
@@ -23,7 +23,7 @@ const useLocaleClient = () => {
         }
     }, [])
 
-    return locales[lang]
+    return locales[lang] ?? locales['en']
 }
 
 export default useLocaleClient

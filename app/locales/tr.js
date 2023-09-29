@@ -1,5 +1,16 @@
 export default {
+    privacyPolicy: {
+        privacyPolicy: 'Gizlilik Politikası',
+        title: 'Marvdle - Gizlilik Politikası',
+        commonid: {
+            title: 'Common ID Çerezi',
+            desc: 'Bu site, hizmetlerini sağlamak için çerezleri ve Common ID çerezi gibi benzer izleme teknolojilerini kullanır. Çerezler, reklamların etkinliğini ölçmek ve güçlü bir çevrimiçi reklamcılık endüstrisi sağlamak için önemli cihazlardır. Common ID çerezi, birinci taraf etki alanında benzersiz bir kullanıcı kimliğini saklar ve reklam ortaklarımız tarafından erişilebilir. Bu basit kimlik, özellikle reklamların iOS ve MacOS tarayıcılarına sunulması amacıyla kullanıcı eşleşmesini iyileştirmek için kullanılabilir. Kullanıcılar buraya tıklayarak Ortak Kimlik izleme çerezini devre dışı bırakabilirler.',
+            matcher: 'buraya',
+            success: 'Başarılı!'
+        }
+    },
     description: 'Bu Marvel kelime oyununda Marvel karakterini tahmin et. Her gün tahmin edebileceğiniz yeni bir karakter sizi bekliyor olacak.',
+    copied: 'Başarıyla kopyalandı!',
     founded: '{{}} kişi buldu!',
     yesterday: 'Dünün karakteri {{}} {{}} oldu',
     colors: {
@@ -8,7 +19,21 @@ export default {
         yellow: 'Sarı'
     },
     clues: {
-        image: 'Görsel'
+        image: 'Görsel İpucu'
+    },
+    tooltips: {
+        statistics: 'İstatistikler',
+        currentStreak: 'Mevcut Seri\n(günlük ardışık galibiyetler)',
+        how2play: 'Nasıl Oynanır?',
+        partial: 'Bir veya daha fazla özellik doğru ancak hepsi doğru değil',
+        character: 'Karakter Görseli.',
+        gender: 'Erkek veya Kadın.',
+        race: 'İnsan, Tanrı, etc...',
+        alignment: 'İyi, Kötü veya Tarafsız.',
+        height: 'Herhangi bir boy.',
+        weight: 'Herhangi bir kilo.',
+        firstAppearance: 'Herhangi bir yıl.',
+        imageClue: 'Karakter görselinin bulanık versiyonu.'
     },
     modals: {
         info: {
@@ -20,10 +45,31 @@ export default {
                     'Bu harika oyunlardan büyük ölçüde ilham aldık: Wordle, LoLdle',
                     'Arka plan resmi referansı: URL.\n',
                     'Web sitesi istatistik toplamak ve reklam göstermek için çerezleri kullanır. Daha fazla bilgiyi Gizlilik Politikasında bulabilirsiniz.'
-                ]
+                ],
+                privacyPolicy: 'Gizlilik Politikasında'
             },
             feedback: {
-                title: 'Geri bildirimler / Sorular'
+                title: 'Geri bildirimler / Sorular',
+                values: [
+                    'Bir önerin mi var? Bir hata mı buldun?',
+                    '{{}} adresine mail atın. {{}}\n',
+                    'Oyuna destek olmak istersen bana bir kahve ısmarlayabilirsin! ☕'
+                ],
+                buyMeCoffee: 'bana bir kahve ısmarlayabilirsin'
+            }
+        },
+        statistics: {
+            title: 'İstatistikler',
+            mystats: '{{}} istatistiklerim',
+            gamesWon: 'Kazanılan oyunlar',
+            averageGuesses: 'Ortalama tahmin',
+            oneShots: 'Tek atışlar',
+            currentStreak: 'Mevcut seri',
+            maxStreak: 'Maks seri',
+            chart: 'Oyun başına tahmin sayısı',
+            clearStats: {
+                first: 'Verileri temizle',
+                second: 'Verileri temizlemeyi onaylıyor musunuz?'
             }
         },
         help: {
@@ -75,8 +121,8 @@ export default {
                 title: 'İpucu',
                 values: [
                     'Karakteri bulmanıza yardımcı olmak için birkaç tahminden sonra ipucu kilidini açabilirsiniz.\n',
-                    'Görsel, karakterin afişlerinden birinin bulanıklaştırılmış halini verir. Her denemenizde bulanıklaştırma bir adım daha azalır.',
-                    '\nKarakteri tahmin ettiyseniz ipucu kısmına geri dönüp onunla ilgili eksik detayları alabilirsiniz.'
+                    'Görsel İpucu, karakterin afişlerinden birinin bulanıklaştırılmış halini verir. Her denemenizde bulanıklaştırma bir adım daha azalır.',
+                    '\nKarakteri tahmin ettiyseniz ipucu kısmına geri dönüp onunla ilgili görsele ulaşabilirsin.'
                 ]
             },
             example: {
@@ -111,13 +157,14 @@ export default {
                     }
                 ]
             },
-            glhf: 'İyi Oyunlar'
+            glhf: 'İyi Oyunlar!'
         }
     },
+    more_scroll: 'Daha fazlasını görmek için kaydır',
     game_input_placeholder: 'Karakter adını yazın...',
     game_header_title: 'Bugünün Marvel karakterini tahmin et!',
     game_header_subtitle: 'Başlamak için herhangi bir karakteri yazın.',
-    game_clue_title: 'İpucu',
+    game_clue_title: 'Görsel İpucu',
     game_clue_title_disabled: '{{}} denemede',
     game_colorIndicator: {
         title: 'Renk göstergesi',
@@ -132,15 +179,40 @@ export default {
         alignment: 'Taraf',
         height: 'Boy',
         weight: 'Kilo',
-        firstAppearance: 'Yıl',
+        firstAppearance: 'İlk Yıl',
         male: 'Erkek',
         female: 'Kadın',
         good: 'İyi',
-        bad: 'Kötü',
+        evil: 'Kötü',
         neutral: 'Tarafsız',
         human: 'İnsan',
+        mutant: 'Mutant',
         radiation: 'Radyasyon',
         god: 'Tanrı',
         eternal: 'Ölümsüz'
+    },
+    game_end: {
+        end: {
+            oneshot: 'TEK DENEME!',
+            endList: ['gg ez', 'ZAFER', 'gg wp'],
+            youguessed: 'Tahmin ettin',
+            find_text: 'Bugünün karakterini bulan {{}} kişisin',
+            th: '.',
+            tries: 'Deneme sayısı'
+        },
+        share: {
+            text: '#Marvdle oyununda #{{}} karakterini {{}} denemede{{}} buldum {{}}⚔️{{}}',
+            one: 'tek',
+            s: '',
+            more: 'daha',
+            easy: 'kolaydı',
+            copy: 'Kopyala',
+            share: 'Paylaş',
+            copied_text: 'Başarıyla kopyalandı!'
+        }
+    },
+    timer: {
+        title: 'Sıradaki karakter',
+        timezone: "Saat dilimi: Avrupa/İstanbul\n(UTC+3'de gece yarısı)"
     }
 }

@@ -23,7 +23,7 @@ const GameListItem = ({ texts, compare }) => {
         <div
             ref={divRef}
             className={classNames(
-                'w-16 flex flex-col justify-center items-center select-none rounded-md overflow-hidden border border-marvel-gray relative m-0.5 basis-[calc(14.28%_-_4px)]',
+                'flex justify-center items-center relative select-none rounded overflow-hidden border border-marvel-gray m-0.5 basis-[calc(14.28%_-_4px)] before:block before:w-full before:h-full before:bg-marvel-black before:bg-opacity-40 hover:before:bg-opacity-0 before:transition-all before:duration-300',
                 {
                     'bg-marvel-red': compare === false || compare === 'down' || compare === 'up',
                     'bg-marvel-blue': compare === true,
@@ -37,7 +37,7 @@ const GameListItem = ({ texts, compare }) => {
         >
             <span
                 ref={textRef}
-                className='flex flex-col justify-center items-center font-medium text-shadow-black-md'
+                className='absolute top-0 left-0 w-full h-full flex flex-col justify-center items-center font-medium text-shadow-black-md'
                 style={{
                     transform: `scale(${scale})`
                 }}

@@ -1,10 +1,10 @@
 'use client'
 
-import { SET } from '@/app/actions/cookies'
+import { SET } from '@/actions/cookies'
 import Popover from '../../Popover'
 import { ChevronDown } from 'lucide-react'
 import { ChevronUp } from 'lucide-react'
-import langs from '@/app/locales/langs'
+import langs from '@/locales/langs'
 
 const Provider = ({ children }) => {
     const onClickHandle = async (key, value, close) => {

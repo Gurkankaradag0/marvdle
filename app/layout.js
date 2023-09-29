@@ -1,9 +1,10 @@
-import '@/app/styles/globals.css'
-import { defaultLocale } from '@/middleware'
+import '@/assets/css/globals.css'
+import { defaultLocale } from '~/middleware'
 import { Poppins } from 'next/font/google'
 import { cookies } from 'next/headers'
 import HomeLayoutContainer from './containers/Home/HomeLayoutContainer'
 import StoreProvider from './contexts/StoreProvider'
+import TooltipProvider from './contexts/TooltipProvider'
 
 const inter = Poppins({ weight: ['100', '200', '300', '400', '500', '600', '700', '800', '900'], subsets: ['latin', 'latin-ext'] })
 
@@ -18,9 +19,14 @@ const RootLayout = ({ children }) => {
 
     return (
         <html lang={lang ?? defaultLocale}>
-            <body className={inter.className}>
+            <body
+                id='body'
+                className={inter.className}
+            >
                 <StoreProvider>
-                    <HomeLayoutContainer>{children}</HomeLayoutContainer>
+                    <TooltipProvider>
+                        <HomeLayoutContainer>{children}</HomeLayoutContainer>
+                    </TooltipProvider>
                 </StoreProvider>
             </body>
         </html>

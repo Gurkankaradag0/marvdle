@@ -20,7 +20,7 @@ const GameListCharacterItem = ({ name, imgName }) => {
         setScale(scale)
     }, [name])
     return (
-        <div className='relative group rounded-md m-0.5 basis-[calc(14.28%_-_4px)] border border-marvel-white select-none'>
+        <div className='relative group rounded-md m-0.5 basis-[calc(14.28%_-_4px)] border border-marvel-gray select-none'>
             <Image
                 alt={`${name} square image`}
                 src={`https://cdn.marvel.com/content/2x/${imgName}`}
@@ -30,7 +30,7 @@ const GameListCharacterItem = ({ name, imgName }) => {
                     width: '100%',
                     height: 'auto'
                 }}
-                className='rounded-xl'
+                className='rounded-lg'
                 draggable={false}
             />
             <span

@@ -1,16 +1,26 @@
 import Link from 'next/link'
 import Languages from './Languages'
+import useLocaleServer from '@/hooks/useLocaleServer'
 
 const Footer = () => {
+    const locale = useLocaleServer()
     return (
-        <footer className='flex justify-center items-center gap-2 py-4 text-sm font-semibold'>
-            <Languages />
-            <span>@2023 {` `}</span>
+        <footer className='flex flex-col justify-center items-center py-4 text-sm font-semibold'>
+            <div className='flex justify-center items-center gap-2'>
+                <Languages />
+                <span>@2023 {` `}</span>
+                <Link
+                    href='http://www.npoq.net'
+                    className='text-marvel-blue text-base leading-none -mt-1'
+                >
+                    npoq.net
+                </Link>
+            </div>
             <Link
-                href='http://www.npoq.net'
-                className='text-marvel-blue text-base leading-none -mt-1'
+                href='/privacy-policy'
+                className='text-xs text-marvel-gray hover:underline'
             >
-                npoq.net
+                {locale.privacyPolicy.privacyPolicy}
             </Link>
         </footer>
     )

@@ -183,12 +183,12 @@ const Panel = ({ as = 'ul', completedValues = [], notFound = '', className = '',
     if (!isOpen) return null
 
     return createElement(
-        'ul',
+        'div',
         {
             className:
                 typeof className === 'function'
                     ? classNamePanel({}) || className({})
-                    : `z-10 flex flex-col py-2 bg-white absolute top-full left-0 w-full rounded-es-md rounded-ee-md max-h-52 overflow-y-auto overflow-x-hidden text-black scrollbar scrollbar-thumb-fg-secondary scrollbar-track-white scrollbar-w-1 scrollbar-rounded-md ${
+                    : `z-10 flex flex-col py-2 bg-white absolute top-full left-0 w-full rounded-es-md rounded-ee-md max-h-52 overflow-y-auto overflow-x-hidden text-black scroller ${
                           classNamePanel || className
                       }`,
             ...props
@@ -197,7 +197,7 @@ const Panel = ({ as = 'ul', completedValues = [], notFound = '', className = '',
             {values.length > 0 ? (
                 <>
                     {values.map((value, key) => (
-                        <li
+                        <div
                             key={key}
                             className={`py-2 px-4 hover:bg-fg-secondary cursor-pointer select-none overflow-x-clip overflow-ellipsis whitespace-nowrap text-left relative ${classNamePanelItem}`}
                             onClick={() => onSubmit(value)}
@@ -214,13 +214,13 @@ const Panel = ({ as = 'ul', completedValues = [], notFound = '', className = '',
                                     {value}
                                 </div>
                             ) : (
-                                <>{value}</>
+                                value
                             )}
-                        </li>
+                        </div>
                     ))}
                 </>
             ) : (
-                <li className='py-2 px-4 flex justify-center items-center cursor-default select-none text-center'>{notFoundText}</li>
+                <div className='py-2 px-4 flex justify-center items-center cursor-default select-none text-center'>{notFoundText}</div>
             )}
         </>
     )

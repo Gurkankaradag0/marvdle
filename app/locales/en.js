@@ -1,5 +1,16 @@
 export default {
+    privacyPolicy: {
+        privacyPolicy: 'Privacy Policy',
+        title: 'Marvdle - Privacy Policy',
+        commonid: {
+            title: 'Common ID Cookie',
+            desc: 'This site uses cookies and similar tracking technologies such as the Common ID cookie to provide its services. Cookies are important devices for measuring advertising effectiveness and ensuring a robust online advertising industry. The Common ID cookie stores a unique user id in the first party domain and is accessible to our ad partners. This simple ID that can be utilized to improve user matching, especially for delivering ads to iOS and MacOS browsers. Users can opt out of the Common ID tracking cookie by clicking here.',
+            matcher: 'here',
+            success: 'Optout Success!'
+        }
+    },
     description: 'Guess the Marvel character in this Marvel wordle game. A new character for you to guess awaits every day.',
+    copied: 'Copied successfully!',
     founded: '{{}} people already found out!',
     yesterday: "Yesterday's character was {{}} {{}}",
     colors: {
@@ -8,116 +19,152 @@ export default {
         yellow: 'Yellow'
     },
     clues: {
-        image: 'Image'
+        image: 'Image Clue'
+    },
+    tooltips: {
+        statistics: 'Stats',
+        currentStreak: 'Current Streak\n(daily consecutive wins)',
+        how2play: 'How to Play?',
+        partial: 'One or more properties are correct, but not all',
+        character: 'Character Image.',
+        gender: 'Male or Female.',
+        race: 'Human, God, etc...',
+        alignment: 'Good, Evil or Neutral.',
+        height: 'Any height.',
+        weight: 'Any weight.',
+        firstAppearance: 'Any year.',
+        imageClue: 'Blurred version of the character image.'
     },
     modals: {
         info: {
             about: {
                 title: 'About',
                 values: [
-                    "Her gün Marvel'den farklı bir karakter tahmin edin.",
-                    'Marvel, bu projeyi desteklememektedir.',
-                    'Bu harika oyunlardan büyük ölçüde ilham aldık: Wordle, LoLdle',
-                    'Arka plan resmi referansı: URL.',
-                    'Web sitesi istatistik toplamak ve reklam göstermek için çerezleri kullanır. Daha fazla bilgiyi Gizlilik Politikasında bulabilirsiniz.'
-                ]
+                    'Every day, guess a different character from Marvel.\n',
+                    'Marvel does not support this project.',
+                    'Greatly inspired by these cool games: Wordle, LoLdle',
+                    'Background image reference: URL.\n',
+                    'The website uses cookies to collect statistics and show ads. More info in the Privacy Policy.'
+                ],
+                privacyPolicy: 'Privacy Policy'
             },
             feedback: {
-                title: 'Geri bildirimler / Sorular'
+                title: 'Feedbacks / Questions',
+                values: [
+                    'Have a suggestion? Found an error?',
+                    'Send a mail to {{}}. {{}}\n',
+                    "If you'd like to support the game, you can buy me a coffee! ☕"
+                ],
+                buyMeCoffee: 'buy me a coffee'
+            }
+        },
+        statistics: {
+            title: 'Statistics',
+            mystats: 'My {{}} stats',
+            gamesWon: 'Games won',
+            averageGuesses: 'Average guesses',
+            oneShots: 'One shots',
+            currentStreak: 'Current streak',
+            maxStreak: 'Max streak',
+            chart: 'Number of guesses per game',
+            clearStats: {
+                first: 'Clear data',
+                second: 'Confirm clear data?'
             }
         },
         help: {
             title: 'How to play?',
             desc: "Guess today's character from Marvel. It changes every 24h.",
             how2play: [
-                'Bir karakterin adını yazmanız yeterlidir, özellikleri ortaya çıkacaktır.',
-                'Tahmininizin bulunması gereken karaktere ne kadar yakın olduğunu göstermek için karelerin rengi değişecek.\n',
-                'Mavi, özelliğin tam olarak eşleştiğini gösterir.',
-                'Sarı, kısmi eşleşmeyi gösterir.',
-                'Kırmızı, tahmininiz ile özellik arasında örtüşme olmadığını gösterir.',
-                '⬇️ ⬆️, Oklar cevap özelliğinin tahmininizin üstünde mi yoksa altında mı olduğunu gösterir.'
+                'Simply type in the name of a characcter and it will reveal its properties.',
+                'The color of the tiles will change to show how close your guess was to the character to find.\n',
+                'Blue, indicates the property is an exact match.',
+                'Yellow, indicates partial match.',
+                'Red, indicates there is no overlap between your guess and the property.',
+                '⬇️ ⬆️, With arrows, it also indicates if the answer property is above or below your guess. '
             ],
-            properties_title: 'Özellikler',
-            possible_values: 'Olası değerler',
+            properties_title: 'Properties',
+            possible_values: 'Possible values',
             properties: [
                 {
-                    title: 'Cinsiyet',
-                    desc: 'Karakterin cinsiyetini ifade eder.',
-                    possible_values: 'Erkek veya Kadın.'
+                    title: 'Gender',
+                    desc: "It represents the character's gender.",
+                    possible_values: 'Male or Female.'
                 },
                 {
-                    title: 'Irk',
-                    desc: 'Karakterin ırkını ifade eder. Bir karakterin birden fazla ırkı olabilir.',
-                    possible_values: 'İnsan, Tanrı, etc...'
+                    title: 'Race',
+                    desc: "It represents the character's race. A character can have more than one race.",
+                    possible_values: 'Human, God, etc...'
                 },
                 {
-                    title: 'Taraf',
-                    desc: 'Karakterin hangi taraftan olduğunu ifade eder.',
-                    possible_values: 'İyi, Kötü veya Tarafsız.'
+                    title: 'Alignment',
+                    desc: 'It indicates which side the character is on.',
+                    possible_values: 'Good, Evil or Neutral.'
                 },
                 {
-                    title: 'Boy',
-                    desc: 'Karakterin boyunu ifade eder. Inch cinsinden.',
-                    possible_values: 'Herhangi bir boy.'
+                    title: 'Height',
+                    desc: "It indicates the character's height. In inches.",
+                    possible_values: 'Any height.'
                 },
                 {
-                    title: 'Kilo',
-                    desc: 'Karakterin kilosunu ifade eder. lb cinsinden.',
-                    possible_values: 'Herhangi bir kilo.'
+                    title: 'Weight',
+                    desc: "It indicates the character's weight. In pounds (lb).",
+                    possible_values: 'Any weight.'
                 },
                 {
-                    title: 'Yıl',
-                    desc: 'Karakterin ilk görünüm yılını ifade eder.',
-                    possible_values: 'Herhangi bir yıl.'
+                    title: 'Debut Year',
+                    desc: "It indicates the character's first appearance year.",
+                    possible_values: 'Any year.'
                 }
             ],
             clues: {
-                title: 'İpucu',
+                title: 'Clue',
                 values: [
-                    'Karakteri bulmanıza yardımcı olmak için birkaç tahminden sonra ipucu kilidini açabilirsiniz.',
-                    'Görsel, karakterin afişlerinden birinin bulanıklaştırılmış halini verir. Her denemenizde bulanıklaştırma bir adım daha azalır.',
-                    'Karakteri tahmin ettiyseniz ipucu kısmına geri dönüp onunla ilgili eksik detayları alabilirsiniz.'
+                    'After a few guesses, you can unlock the clue hint to help you find the character.\n',
+                    "Image Clue, provides the blurred version of one of the character's posters. With each attempt, the blurring decreases by one step.",
+                    '\nIf you have guessed the character, you can go back to the clue section and access the visual related to them.'
                 ]
             },
             example: {
-                title: 'Örnek',
-                desc_1: 'Doğru cevabın Wolverine olduğunu düşünün.',
-                desc_2: "Spiderman'i girerseniz şu özellikler görünecektir:",
-                desc_3: "Eğer Wolverine'i girseydiniz, karşınıza şunlar çıkacaktı:",
+                title: 'Example',
+                desc_1: 'Consider the correct answer is Wolverine.',
+                desc_2: 'If you enter Spiderman, these properties will appear:',
+                desc_3: 'If you entered Wolverine, here is what would come up:',
                 values: [
                     {
-                        title: 'Cinsiyet: Mavi',
-                        desc: 'Tam bir eşleşme, ikisi de erkek.'
+                        title: 'Gender: Blue',
+                        desc: 'It is an exact match, they are both male. '
                     },
                     {
-                        title: 'Irk: Sarı',
-                        desc: 'Wolverine mutant olduğundan bu bir eşleşme değil.'
+                        title: 'Race: Yellow',
+                        desc: 'Wolverine is not a match because he is a mutant.'
                     },
                     {
-                        title: 'Taraf: Mavi',
-                        desc: 'İkisi de iyi karakter olduğundan birebir eşleşiyorlar.'
+                        title: 'Alignment: Blue',
+                        desc: 'They both are good characters, so they match perfectly.'
                     },
                     {
-                        title: 'Boy: Kırmızı ve yukarı ok',
-                        desc: "Wolverine'in boyu Spiderman'den uzun."
+                        title: 'Height: Red and a up arrow',
+                        desc: 'Wolverine is taller than Spiderman.'
                     },
                     {
-                        title: 'Kilo: Kırmızı ve yukarı ok',
-                        desc: "Wolverine'in kilosu Spiderman'den ağır."
+                        title: 'Weight: Red and a up arrow',
+                        desc: 'Wolverine weighs more than Spiderman.'
                     },
                     {
-                        title: 'Yıl: Kırmızı ve yukarı ok',
-                        desc: "Wolverine'in ilk görünüm yılı Spiderman'den sonra."
+                        title: 'Debut Year: Red and a up arrow',
+                        desc: "Wolverine's first appearance year is after Spiderman's."
                     }
                 ]
             },
-            glhf: 'İyi Oyunlar'
+            glhf: 'Good Games!'
         }
     },
+    more_scroll: 'Scroll horizontally to see more',
     game_input_placeholder: 'Type character name...',
     game_header_title: "Guess today's Marvel character!",
     game_header_subtitle: 'Type any character to begin.',
-    game_clue_title: 'Clue',
+    game_clue_title: 'Image Clue',
     game_clue_title_disabled: 'in {{}} tries',
     game_colorIndicator: {
         title: 'Color Indicator',
@@ -132,15 +179,40 @@ export default {
         alignment: 'Alignment',
         height: 'Height',
         weight: 'Weight',
-        firstAppearance: 'Year',
+        firstAppearance: 'Debut Year',
         male: 'Male',
         female: 'Female',
         good: 'Good',
-        bad: 'Bad',
+        evil: 'Evil',
         neutral: 'Neutral',
         human: 'Human',
+        mutant: 'Mutant',
         radiation: 'Radiation',
         god: 'God',
         eternal: 'Eternal'
+    },
+    game_end: {
+        end: {
+            oneshot: 'ONE SHOT!',
+            endList: ['gg ez', 'VICTORY', 'gg wp'],
+            youguessed: 'You guessed',
+            find_text: 'You are the {{}} to find the character today',
+            th: 'th',
+            tries: 'Number of tries'
+        },
+        share: {
+            text: 'I found character #{{}} in #Marvdle game in {{}} shot{{}} {{}}⚔️{{}}',
+            one: 'one',
+            s: 's',
+            more: 'more',
+            easy: 'easy',
+            copy: 'Copy',
+            share: 'Share',
+            copied_text: 'Copied successfully!'
+        }
+    },
+    timer: {
+        title: 'Next character in',
+        timezone: 'Time zone: Europe/İstanbul\n(Midnight at UTC+3)'
     }
 }

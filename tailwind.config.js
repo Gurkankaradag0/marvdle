@@ -19,7 +19,6 @@ const textShadow = plugin(({ addUtilities }) => {
 })
 
 module.exports = {
-    mode: 'jit',
     content: ['./pages/**/*.{js,ts,jsx,tsx,mdx}', './components/**/*.{js,ts,jsx,tsx,mdx}', './app/**/*.{js,ts,jsx,tsx,mdx}'],
     theme: {
         extend: {
@@ -38,6 +37,40 @@ module.exports = {
                 bg: {
                     primary: 'white',
                     secondary: 'rgb(229,29,36,.5)'
+                }
+            },
+
+            animation: {
+                loader: 'loader 5s ease-in-out 1s infinite'
+            },
+
+            keyframes: {
+                loader: {
+                    '0%': {
+                        top: '0%',
+                        left: '0%',
+                        backgroundColor: '#c7e7fb'
+                    },
+                    '25%': {
+                        top: '0%',
+                        left: '-100%',
+                        backgroundColor: '#e25530'
+                    },
+                    '50%': {
+                        left: '-100%',
+                        top: '-100%',
+                        backgroundColor: '#fdd201'
+                    },
+                    '75%': {
+                        top: '-100%',
+                        left: '0%',
+                        backgroundColor: '#fa4222'
+                    },
+                    '100%': {
+                        top: '0%',
+                        left: '0%',
+                        backgroundColor: '#c7e7fb'
+                    }
                 }
             }
         }

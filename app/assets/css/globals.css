@@ -9,7 +9,7 @@
     }
 
     html {
-        @apply bg-marvel-black bg-[url('/background.jpg')] bg-no-repeat bg-center bg-fixed bg-cover;
+        @apply bg-marvel-black bg-[url('/background.jpg')] bg-no-repeat bg-center bg-fixed bg-cover scroller antialiased;
     }
 
     body {
@@ -24,5 +24,22 @@
     .superior-clip {
         clip-path: polygon(97% 40%, 80% 40%, 80% 95%, 20% 95%, 20% 40%, 3% 40%, 50% 5%);
         -webkit-clip-path: polygon(97% 40%, 80% 40%, 80% 95%, 20% 95%, 20% 40%, 3% 40%, 50% 5%);
+    }
+
+    .scroller {
+        scrollbar-width: thin;
+        scrollbar-color: rgba(118, 118, 118, 0.5) rgb(21, 21, 21);
+    }
+
+    .scroller::-webkit-scrollbar {
+        @apply w-2 h-2 bg-marvel-black pl-2;
+    }
+
+    .scroller::-webkit-scrollbar-thumb {
+        @apply bg-marvel-gray/[0.5];
+    }
+
+    .scroller::-webkit-scrollbar-thumb:hover {
+        @apply bg-marvel-gray;
     }
 }

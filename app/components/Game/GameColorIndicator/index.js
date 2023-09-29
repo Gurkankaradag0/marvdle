@@ -1,22 +1,24 @@
 'use client'
 
-import { useState, useEffect } from 'react'
-import { useCharacters } from '@/app/store/actions/game'
+import { useState, useEffect, useCallback } from 'react'
+import { useCharacters } from '@/store/actions/game'
 import { XIcon } from 'lucide-react'
-import useLocaleClient from '@/app/hooks/useLocaleClient'
+import useLocaleClient from '@/hooks/useLocaleClient'
+import Tooltip from '../../Tooltip'
+import { getLocalStorage, setLocalStorage } from '@/actions/localStorage'
 
 const GameColorIndicator = () => {
     const [open, setOpen] = useState(true)
     const characters = useCharacters()
     const locale = useLocaleClient()
 
-    const onClose = () => {
-        localStorage.setItem('colorIndicator', JSON.stringify(false))
+    const onClose = useCallback(() => {
+        setLocalStorage('colorIndicator', false)
         setOpen(false)
-    }
+    })
 
     useEffect(() => {
-        setOpen((localStorage.getItem('colorIndicator') && JSON.parse(localStorage.getItem('colorIndicator'))) ?? true)
+        setOpen(getLocalStorage('colorIndicator'))
     }, [])
 
     if (characters.length === 0 || !open) return null
@@ -28,21 +30,26 @@ const GameColorIndicator = () => {
                 <div className='flex justify-center items-center basis-[calc(33.3%_-_8px)] m-1'>
                     <div className='block w-10 h-10 rounded-md border border-marvel-gray bg-marvel-blue' />
                 </div>
-                <div className='flex justify-center items-center basis-[calc(33.3%_-_8px)] m-1'>
-                    <div className='block w-10 h-10 rounded-md border border-marvel-gray bg-marvel-yellow' />
-                </div>
+                <Tooltip.Item
+                    alignment='top'
+                    text={locale.tooltips.partial}
+                >
+                    <div className='flex justify-center items-center basis-[calc(33.3%_-_8px)] m-1'>
+                        <div className='block w-10 h-10 rounded-md border border-marvel-gray bg-marvel-yellow' />
+                    </div>
+                </Tooltip.Item>
                 <div className='flex justify-center items-center basis-[calc(33.3%_-_8px)] m-1'>
                     <div className='block w-10 h-10 rounded-md border border-marvel-gray bg-marvel-red' />
                 </div>
             </div>
-            <div className='flex flex-wrap w-full'>
+            <div className='flex flex-wrap w-full max-[420px]:text-sm'>
                 <div className='flex justify-center items-center basis-[calc(33.3%_-_8px)] m-1'>{locale.game_colorIndicator.good}</div>
                 <div className='flex justify-center items-center basis-[calc(33.3%_-_8px)] m-1'>{locale.game_colorIndicator.partial}</div>
                 <div className='flex justify-center items-center basis-[calc(33.3%_-_8px)] m-1'>{locale.game_colorIndicator.bad}</div>
             </div>
             <button
                 onClick={onClose}
-                className='absolute rounded-md border-2 -top-[15px] hover:bg-marvel-gray -right-[15px] border-marvel-red bg-marvel-black p-1 flex justify-center items-center'
+                className='absolute rounded-md border-2 -top-[15px] -right-[15px] border-marvel-red bg-marvel-black p-1 flex justify-center items-center'
             >
                 <XIcon size={18} />
             </button>

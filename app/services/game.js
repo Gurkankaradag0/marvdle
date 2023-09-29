@@ -8,7 +8,7 @@ const getCharacterNames = async () => {
 
 const getFounded = async () => {
     const response = await fetch(`${process.env.API_ENDPOINT}/dailycharacter/founded`, {
-        next: { revalidate: 60 }
+        cache: 'no-store'
     })
 
     return response.json()
@@ -24,7 +24,7 @@ const getClue = async () => {
 
 const getYesterdayCharacter = async () => {
     const response = await fetch(`${process.env.API_ENDPOINT}/yesterdaycharacter`, {
-        next: { revalidate: 600 }
+        cache: 'no-store'
     })
 
     return response.json()

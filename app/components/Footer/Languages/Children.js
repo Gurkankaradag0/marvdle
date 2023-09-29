@@ -1,5 +1,5 @@
-import langs from '@/app/locales/langs'
-import { defaultLocale } from '@/middleware'
+import langs from '@/locales/langs'
+import { defaultLocale } from '~/middleware'
 import { cookies } from 'next/headers'
 
 const Children = () => {
