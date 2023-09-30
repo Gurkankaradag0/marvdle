@@ -14,7 +14,6 @@ const OptOut = ({ text }) => {
     return (
         <span
             className='text-marvel-blue cursor-pointer'
-            // href='?opt-out=1'
             onClick={onClickHandle}
         >
             {text}

@@ -5,13 +5,16 @@ import { cookies } from 'next/headers'
 import HomeLayoutContainer from './containers/Home/HomeLayoutContainer'
 import StoreProvider from './contexts/StoreProvider'
 import TooltipProvider from './contexts/TooltipProvider'
+import locales from './locales'
 
 const inter = Poppins({ weight: ['100', '200', '300', '400', '500', '600', '700', '800', '900'], subsets: ['latin', 'latin-ext'] })
 
-export const metadata = {
-    title: 'Marvdle',
-    description:
-        'Guess the Marvel character in this Marvel wordle game. A new character for you to guess awaits every day.\rBu Marvel kelime oyununda Marvel karakterini tahmin et. Her gün tahmin edebileceğiniz yeni bir karakter sizi bekliyor olacak.'
+export const generateMetadata = async () => {
+    const lang = cookies().get('lang')?.value ?? defaultLocale
+    return {
+        title: 'Marvdle',
+        description: locales[lang].description
+    }
 }
 
 const RootLayout = ({ children }) => {
