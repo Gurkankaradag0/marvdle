@@ -1,4 +1,5 @@
 export default {
+    tryAgain: 'Try Again',
     privacyPolicy: {
         privacyPolicy: 'Privacy Policy',
         title: 'Marvdle - Privacy Policy',

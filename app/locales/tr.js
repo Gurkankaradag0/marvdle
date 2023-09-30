@@ -1,4 +1,5 @@
 export default {
+    tryAgain: 'Yeniden Dene',
     privacyPolicy: {
         privacyPolicy: 'Gizlilik Politikası',
         title: 'Marvdle - Gizlilik Politikası',
