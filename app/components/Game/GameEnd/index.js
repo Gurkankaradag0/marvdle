@@ -9,6 +9,7 @@ import { useReward } from 'react-rewards'
 import End from './End'
 import Share from './Share'
 import { useWindowSize } from 'react-use'
+import { useIsCompleted } from '@/store/actions/animation'
 
 const GameEnd = ({ yesterdayPlacement }) => {
     const placement = usePlacement()
@@ -17,6 +18,7 @@ const GameEnd = ({ yesterdayPlacement }) => {
     const stats = useStats()
     const confetti = useConfetti()
     const { width } = useWindowSize()
+    const isCompleted = useIsCompleted()
 
     const scrollToEnd = () => {
         scroller.scrollTo('game_end', {
@@ -65,13 +67,13 @@ const GameEnd = ({ yesterdayPlacement }) => {
     }
 
     useEffect(() => {
-        if (!loading && placement !== 0) {
+        if (!loading && placement !== 0 && isCompleted) {
             setStatsHandle()
             confetti ? reward() : scrollToEnd()
         }
-    }, [loading, placement])
+    }, [loading, isCompleted])
 
-    if (loading || placement === 0) return null
+    if (loading || placement === 0 || !isCompleted) return null
 
     return (
         <div

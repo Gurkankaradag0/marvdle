@@ -41,10 +41,19 @@ module.exports = {
             },
 
             animation: {
-                loader: 'loader 5s ease-in-out 1s infinite'
+                loader: 'loader 5s ease-in-out 1s infinite',
+                'list-item': 'list-item 2s ease-in-out'
             },
 
             keyframes: {
+                'list-item': {
+                    from: {
+                        opacity: 0
+                    },
+                    to: {
+                        opacity: 1
+                    }
+                },
                 loader: {
                     '0%': {
                         top: '0%',

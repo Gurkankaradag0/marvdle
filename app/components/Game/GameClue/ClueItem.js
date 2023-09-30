@@ -5,6 +5,7 @@ import { getClue } from '@/actions/game'
 import { useCharacters, usePlacement } from '@/store/actions/game'
 import { ImageIcon } from 'lucide-react'
 import Tooltip from '../../Tooltip'
+import { useIsCompleted } from '@/store/actions/animation'
 
 const ClueItem = ({ tooltipText, clueTextDisabled, clueText, clueCount }) => {
     const [open, setOpen] = useState(false)
@@ -12,6 +13,7 @@ const ClueItem = ({ tooltipText, clueTextDisabled, clueText, clueCount }) => {
     const canvasRef = useRef(null)
     const characters = useCharacters()
     const placement = usePlacement()
+    const isCompleted = useIsCompleted()
 
     const getClueHandle = async () => {
         const { clue } = await getClue()
@@ -107,7 +109,7 @@ const ClueItem = ({ tooltipText, clueTextDisabled, clueText, clueCount }) => {
                     <button
                         className='flex flex-col justify-center items-center mt-2 gap-2 w-fit mx-auto group'
                         onClick={() => setOpen(!open)}
-                        disabled={characters.length < clueCount && placement === 0}
+                        disabled={(characters.length < clueCount && placement === 0) || (placement !== 0 && !isCompleted)}
                     >
                         <div
                             className={`flex flex-col justify-center items-center bg-marvel-black rounded-full ease-in duration-100 border-2 border-marvel-red p-4 group-hover:scale-105 group-disabled:scale-100 group-disabled:border-marvel-gray group-disabled:text-marvel-gray`}
@@ -117,7 +119,7 @@ const ClueItem = ({ tooltipText, clueTextDisabled, clueText, clueCount }) => {
                                 strokeWidth={1.5}
                             />
                         </div>
-                        {characters.length < clueCount && placement === 0 ? (
+                        {(characters.length < clueCount && placement === 0) || (placement !== 0 && !isCompleted) ? (
                             <div className='flex flex-col select-none'>
                                 <span className='text-sm text-marvel-gray'>{clueText}</span>
                                 <span className='text-xs text-marvel-gray'>{clueTextDisabled.replace('{{}}', clueCount - characters.length)}</span>

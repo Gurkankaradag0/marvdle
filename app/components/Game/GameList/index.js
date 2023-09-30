@@ -1,17 +1,18 @@
 'use client'
 
+import { useEffect, useMemo } from 'react'
 import { clearState, setGameNumero, setStats, useCharacters, useGameNumero, useLoading, useStats, useVersion } from '@/store/actions/game'
-import useLocaleClient from '@/hooks/useLocaleClient'
-import GameListItem from './GameListItem'
-import GameListCharacterItem from './GameListCharacterItem'
-import { useEffect } from 'react'
+import { motion } from 'framer-motion'
 import { getCharacters } from '@/store/actions/game'
 import { GAME_ALIGNMENTS } from '@/utils/constans'
+import { getLocalStorage } from '@/actions/localStorage'
+import useLocaleClient from '@/hooks/useLocaleClient'
+
+import GameListItem from './GameListItem'
+import GameListCharacterItem from './GameListCharacterItem'
 import Tooltip from '../../Tooltip'
 import GameListMore from './GameListMore'
-
-import { useAutoAnimate } from '@formkit/auto-animate/react'
-import { getLocalStorage } from '@/actions/localStorage'
+import { setIsCompleted, setIsNew, useIsNew } from '@/store/actions/animation'
 
 const GameList = ({ yesterdayPlacement }) => {
     const characters = useCharacters()
@@ -20,8 +21,28 @@ const GameList = ({ yesterdayPlacement }) => {
     const locale = useLocaleClient()
     const stats = useStats()
     const version = useVersion()
+    const isNew = useIsNew()
 
-    const [animationRef] = useAutoAnimate()
+    const container = useMemo(() => {
+        const _container = {
+            hidden: { opacity: 1, scale: 0 },
+            visible: {
+                opacity: 1,
+                scale: 1,
+                transition: {
+                    delayChildren: isNew ? 0.5 : 0,
+                    staggerChildren: isNew ? 0.5 : 0
+                }
+            }
+        }
+        isNew && setIsNew(false)
+        return _container
+    }, [isNew])
+
+    const item = {
+        hidden: { scale: 0, opacity: 0 },
+        visible: { scale: 1, opacity: 1 }
+    }
 
     const setStatsHandle = () => {
         if (stats.currentStreak === 0) return
@@ -33,8 +54,10 @@ const GameList = ({ yesterdayPlacement }) => {
     useEffect(() => {
         setStatsHandle()
         const localVersion = getLocalStorage('version')
+
         if (!localVersion || localVersion !== version) clearState()
-        else if (gamenumero === yesterdayPlacement + 1) getCharacters()
+
+        if (gamenumero === yesterdayPlacement + 1) getCharacters()
         else setGameNumero(yesterdayPlacement + 1)
     }, [])
 
@@ -57,14 +80,16 @@ const GameList = ({ yesterdayPlacement }) => {
                         ))}
                     </div>
                 </div>
-                <ul
-                    className='flex flex-col w-[165%] max-[678px]:ml-[65%] gap-2'
-                    ref={animationRef}
-                >
+                <ul className='flex flex-col w-[165%] max-[678px]:ml-[65%] gap-2'>
                     {characters.map((character) => (
-                        <li
+                        <motion.li
                             key={character.name}
                             className='flex flex-wrap w-full'
+                            variants={container}
+                            initial='hidden'
+                            animate='visible'
+                            onAnimationStart={() => setIsCompleted(false)}
+                            onAnimationComplete={() => setIsCompleted(true)}
                         >
                             <GameListCharacterItem
                                 name={character.name}
@@ -73,28 +98,34 @@ const GameList = ({ yesterdayPlacement }) => {
                             <GameListItem
                                 texts={[locale.game_alignments[character.gender]]}
                                 compare={character?.compare?.[0] || true}
+                                variants={item}
                             />
                             <GameListItem
                                 texts={character.race.map((race) => locale.game_alignments[race])}
                                 compare={character?.compare?.[1] || true}
+                                variants={item}
                             />
                             <GameListItem
                                 texts={[locale.game_alignments[character.alignment]]}
                                 compare={character?.compare?.[2] || true}
+                                variants={item}
                             />
                             <GameListItem
                                 texts={[character.height.replace('.', "'")]}
                                 compare={character?.compare?.[3] || true}
+                                variants={item}
                             />
                             <GameListItem
                                 texts={[character.weight]}
                                 compare={character?.compare?.[4] || true}
+                                variants={item}
                             />
                             <GameListItem
                                 texts={[character.firstAppearance]}
                                 compare={character?.compare?.[5] || true}
+                                variants={item}
                             />
-                        </li>
+                        </motion.li>
                     ))}
                 </ul>
             </div>

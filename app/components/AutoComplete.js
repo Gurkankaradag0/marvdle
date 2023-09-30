@@ -1,11 +1,12 @@
 'use client'
 
 import Image from 'next/image'
-import { createContext, createElement, useContext, useState, useEffect, useRef, useMemo, Fragment } from 'react'
+import { createContext, createElement, useContext, useState, useEffect, useRef, useMemo } from 'react'
 
 const AutoCompleteContext = createContext()
 
 const AutoComplete = ({
+    disabled = false,
     children = undefined,
     values = [],
     images = [],
@@ -78,7 +79,10 @@ const AutoComplete = ({
                 </>
             ) : (
                 <>
-                    <Input placeholder={placeholder} />
+                    <Input
+                        placeholder={placeholder}
+                        disabled={disabled}
+                    />
                     {open && <Panel />}
                 </>
             )}
@@ -86,7 +90,7 @@ const AutoComplete = ({
     )
 }
 
-const Input = ({ placeholder = '', className = '', ...props }) => {
+const Input = ({ placeholder = '', className = '', disabled = false, ...props }) => {
     const { value, setValue, focused, inputRef, open, isOpen, classNameInput, close, onClick, completedValues } = useContext(AutoCompleteContext)
 
     const [focus, setFocus] = useState(false)
@@ -127,6 +131,7 @@ const Input = ({ placeholder = '', className = '', ...props }) => {
             onFocus,
             onBlur: () => setFocus(false),
             onKeyDown,
+            disabled,
             ...props
         },
         null

@@ -2,8 +2,9 @@
 
 import classNames from 'classnames'
 import { useEffect, useState, useRef } from 'react'
+import { motion } from 'framer-motion'
 
-const GameListItem = ({ texts, compare }) => {
+const GameListItem = ({ texts, compare, variants }) => {
     const divRef = useRef()
     const textRef = useRef()
     const [scale, setScale] = useState(0)
@@ -20,8 +21,9 @@ const GameListItem = ({ texts, compare }) => {
         setScale(scale)
     }, [texts])
     return (
-        <div
+        <motion.div
             ref={divRef}
+            variants={variants}
             className={classNames(
                 'flex justify-center items-center relative select-none rounded overflow-hidden border border-marvel-gray m-0.5 basis-[calc(14.28%_-_4px)] before:block before:w-full before:h-full before:bg-marvel-black before:bg-opacity-40 hover:before:bg-opacity-0 before:transition-all before:duration-300',
                 {
@@ -46,7 +48,7 @@ const GameListItem = ({ texts, compare }) => {
                     <span key={i}>{text}</span>
                 ))}
             </span>
-        </div>
+        </motion.div>
     )
 }
 

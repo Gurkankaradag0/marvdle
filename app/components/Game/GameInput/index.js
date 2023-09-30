@@ -4,15 +4,18 @@ import { useMemo } from 'react'
 import { getCharacterDetail } from '@/actions/game'
 import AutoComplete from '@/components/AutoComplete'
 import { addCharacters, setPlacement, useCharacterNames, useLoading, usePlacement } from '@/store/actions/game'
+import { setIsNew, useIsCompleted } from '@/store/actions/animation'
 
 const GameInput = ({ names, images, placeholder }) => {
     const placement = usePlacement()
     const characterNames = useCharacterNames()
     const loading = useLoading()
+    const isCompleted = useIsCompleted()
 
     const send = async (character) => {
         if (!character) return false
         const response = await getCharacterDetail(character)
+        setIsNew(true)
         if (response.founded) {
             addCharacters([response.character])
             setPlacement(parseInt(response.founded))
@@ -27,11 +30,12 @@ const GameInput = ({ names, images, placeholder }) => {
         return [filteredZip.map((name) => name[0]), filteredZip.map((name) => name[1])]
     }, [characterNames])
 
-    if (loading || placement !== 0) return null
+    if (loading || (placement !== 0 && isCompleted)) return null
 
     return (
         <div className='w-3/4'>
             <AutoComplete
+                disabled={!isCompleted}
                 values={_names}
                 images={_images}
                 focused={false}
