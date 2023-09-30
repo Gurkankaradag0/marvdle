@@ -1,6 +1,9 @@
 import { useSelector } from 'react-redux'
 import store from '../index'
-import { _addCharacters, _getCharacters, _setConfetti, _setGameNumero, _setPlacement, _setStats } from '../reducers/game'
+import { _addCharacters, _clearState, _getCharacters, _setConfetti, _setGameNumero, _setPlacement, _setStats } from '../reducers/game'
+
+export const useVersion = () => useSelector((state) => state.game.version)
+export const clearState = () => store.dispatch(_clearState())
 
 export const useCharacters = () => useSelector((state) => state.game.characters)
 export const useCharacterNames = () =>

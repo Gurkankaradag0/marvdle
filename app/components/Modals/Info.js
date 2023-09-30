@@ -9,6 +9,7 @@ import { replacePlaceholders } from '@/utils/helpers'
 import { BUYMECOFFEE, MAIL } from '@/utils/constans'
 import { useState } from 'react'
 import CopyToClipboard from 'react-copy-to-clipboard'
+import { useVersion } from '@/store/actions/game'
 
 const LinkMatcher = ({ text }) => {
     let url = '#'
@@ -37,6 +38,7 @@ const LinkMatcher = ({ text }) => {
 }
 
 const Info = () => {
+    const version = useVersion()
     const locale = useLocaleClient()
     const [copied, setCopied] = useState(false)
 
@@ -129,7 +131,7 @@ const Info = () => {
                     </div>
                     <br />
                     <h3 className='text-xl font-semibold'>npoq.net</h3>
-                    <h5 className='text-xs font-semibold text-marvel-gray'>1.0</h5>
+                    <h5 className='text-xs font-semibold text-marvel-gray'>{version}</h5>
                 </div>
             </Modal.Panel>
         </Modal>

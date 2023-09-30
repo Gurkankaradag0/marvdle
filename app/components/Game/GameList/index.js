@@ -1,6 +1,6 @@
 'use client'
 
-import { setGameNumero, setStats, useCharacters, useGameNumero, useLoading, useStats } from '@/store/actions/game'
+import { clearState, setGameNumero, setStats, useCharacters, useGameNumero, useLoading, useStats, useVersion } from '@/store/actions/game'
 import useLocaleClient from '@/hooks/useLocaleClient'
 import GameListItem from './GameListItem'
 import GameListCharacterItem from './GameListCharacterItem'
@@ -10,12 +10,18 @@ import { GAME_ALIGNMENTS } from '@/utils/constans'
 import Tooltip from '../../Tooltip'
 import GameListMore from './GameListMore'
 
+import { useAutoAnimate } from '@formkit/auto-animate/react'
+import { getLocalStorage } from '@/actions/localStorage'
+
 const GameList = ({ yesterdayPlacement }) => {
     const characters = useCharacters()
     const gamenumero = useGameNumero()
     const loading = useLoading()
     const locale = useLocaleClient()
     const stats = useStats()
+    const version = useVersion()
+
+    const [animationRef] = useAutoAnimate()
 
     const setStatsHandle = () => {
         if (stats.currentStreak === 0) return
@@ -26,8 +32,9 @@ const GameList = ({ yesterdayPlacement }) => {
 
     useEffect(() => {
         setStatsHandle()
-
-        if (gamenumero === yesterdayPlacement + 1) getCharacters()
+        const localVersion = getLocalStorage('version')
+        if (!localVersion || localVersion !== version) clearState()
+        else if (gamenumero === yesterdayPlacement + 1) getCharacters()
         else setGameNumero(yesterdayPlacement + 1)
     }, [])
 
@@ -50,10 +57,13 @@ const GameList = ({ yesterdayPlacement }) => {
                         ))}
                     </div>
                 </div>
-                <ul className='flex flex-col w-[165%] max-[678px]:ml-[65%] gap-2'>
-                    {characters.map((character, key) => (
+                <ul
+                    className='flex flex-col w-[165%] max-[678px]:ml-[65%] gap-2'
+                    ref={animationRef}
+                >
+                    {characters.map((character) => (
                         <li
-                            key={key}
+                            key={character.name}
                             className='flex flex-wrap w-full'
                         >
                             <GameListCharacterItem

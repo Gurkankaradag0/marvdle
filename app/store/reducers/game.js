@@ -1,5 +1,5 @@
 import { getCharacterDetail } from '@/actions/game'
-import { getLocalStorage, setLocalStorage } from '@/actions/localStorage'
+import { getLocalStorage, removeLocalStorage, setLocalStorage } from '@/actions/localStorage'
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 
 export const _getCharacters = createAsyncThunk('game/getCharacters', async () => {
@@ -21,6 +21,7 @@ const initialStats = {
 }
 
 const initialState = {
+    version: 'v0.0.1',
     characters: [],
     loading: true,
     gamenumero: getLocalStorage('gamenumero') || 0,
@@ -62,6 +63,18 @@ const game = createSlice({
         _setStats: (state, action) => {
             state.stats = action.payload || initialStats
             setLocalStorage('stats', state.stats)
+        },
+        _clearState: (state) => {
+            state.characters = []
+            state.confetti = true
+            state.stats = initialStats
+            state.placement = 0
+            setLocalStorage('characters', state.characters)
+            setLocalStorage('confetti', state.confetti)
+            setLocalStorage('placement', state.placement)
+            setLocalStorage('stats', state.stats)
+            setLocalStorage('version', state.version)
+            state.loading = false
         }
     },
     extraReducers: (builder) => {
@@ -72,5 +85,5 @@ const game = createSlice({
     }
 })
 
-export const { _setGameNumero, _addCharacters, _setPlacement, _setConfetti, _setStats } = game.actions
+export const { _setGameNumero, _addCharacters, _setPlacement, _setConfetti, _setStats, _clearState } = game.actions
 export default game.reducer
