@@ -8,7 +8,7 @@ import { replacePlaceholders } from '@/utils/helpers'
 const GameYesterday = ({ placement, character }) => {
     const locale = useLocaleClient()
     const loading = useLoading()
-    if (loading) return null
+    if (loading || !character) return null
     return (
         <div className='text-sm font-semibold'>
             <Highlight

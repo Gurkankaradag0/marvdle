@@ -19,6 +19,8 @@ const getYesterdayCharacter = async () => {
         cache: 'no-store'
     })
 
+    if (response.status === 204) return { placement: 0, character: null }
+
     return response.json()
 }
 
