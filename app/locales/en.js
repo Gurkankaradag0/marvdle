@@ -1,5 +1,6 @@
 export default {
     tryAgain: 'Try Again',
+    page500desc: 'An error was encountered',
     homePage: 'Home Page',
     page404desc: "It seems you're lost",
     privacyPolicy: {

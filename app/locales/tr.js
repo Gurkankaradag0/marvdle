@@ -1,5 +1,6 @@
 export default {
     tryAgain: 'Yeniden Dene',
+    page500desc: 'Bir hata ile karşılaşıldı',
     homePage: 'Ana Sayfa',
     page404desc: 'Görünen o ki kaybolmuşsun',
     privacyPolicy: {
