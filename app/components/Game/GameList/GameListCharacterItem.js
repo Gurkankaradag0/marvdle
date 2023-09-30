@@ -7,6 +7,7 @@ const GameListCharacterItem = ({ name, imgName }) => {
     const divRef = useRef()
     const textRef = useRef()
     const [scale, setScale] = useState(0)
+
     useEffect(() => {
         const divElem = divRef.current
         const textElem = textRef.current
@@ -19,18 +20,20 @@ const GameListCharacterItem = ({ name, imgName }) => {
         const scale = Math.min(containerWidth / textWidth, containerHeight / textHeight, 1)
         setScale(scale)
     }, [name])
+
     return (
-        <div className='relative group rounded-md m-0.5 basis-[calc(14.28%_-_4px)] border border-marvel-gray select-none'>
+        <div className='relative group rounded-md m-0.5 basis-[calc(14.28%_-_4px)] border border-marvel-gray select-none overflow-hidden'>
             <Image
                 alt={`${name} square image`}
-                src={`https://cdn.marvel.com/content/2x/${imgName}`}
-                width={64}
-                height={64}
+                src={`https://cdn.marvel.com/content/1x/${imgName}`}
+                width={128}
+                height={128}
+                quality={100}
                 style={{
-                    width: '100%',
-                    height: 'auto'
+                    width: 'auto',
+                    height: '100%'
                 }}
-                className='rounded-lg'
+                // className='h-full w-auto max-[678px]:h-[120%]'
                 draggable={false}
             />
             <span
