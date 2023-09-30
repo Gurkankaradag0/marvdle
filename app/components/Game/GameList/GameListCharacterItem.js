@@ -33,12 +33,11 @@ const GameListCharacterItem = ({ name, imgName }) => {
                     width: 'auto',
                     height: '100%'
                 }}
-                // className='h-full w-auto max-[678px]:h-[120%]'
                 draggable={false}
             />
             <span
                 ref={divRef}
-                className='absolute top-1/2 -translate-y-1/2 left-1/2 -translate-x-1/2 w-4/5 flex flex-col justify-center items-center text-xs group-hover:opacity-100 opacity-0 duration-100 ease-in-out py-0.5 px-1 bg-marvel-red font-semibold'
+                className='absolute text-shadow-black-md top-1/2 -translate-y-1/2 left-1/2 -translate-x-1/2 w-4/5 flex flex-col justify-center items-center text-xs group-hover:opacity-100 opacity-0 transition-opacity py-0.5 px-1 bg-marvel-red font-semibold'
             >
                 <span
                     ref={textRef}
