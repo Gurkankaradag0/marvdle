@@ -1,5 +1,7 @@
 export default {
     tryAgain: 'Try Again',
+    homePage: 'Home Page',
+    page404desc: "It seems you're lost",
     privacyPolicy: {
         privacyPolicy: 'Privacy Policy',
         title: 'Marvdle - Privacy Policy',

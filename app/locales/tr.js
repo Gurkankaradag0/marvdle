@@ -1,5 +1,7 @@
 export default {
     tryAgain: 'Yeniden Dene',
+    homePage: 'Ana Sayfa',
+    page404desc: 'Görünen o ki kaybolmuşsun',
     privacyPolicy: {
         privacyPolicy: 'Gizlilik Politikası',
         title: 'Marvdle - Gizlilik Politikası',

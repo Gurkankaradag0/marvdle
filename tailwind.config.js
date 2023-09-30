@@ -13,7 +13,7 @@ const textShadow = plugin(({ addUtilities }) => {
             'text-shadow': '0px 0px 4px #000'
         },
         '.text-shadow-404': {
-            'text-shadow': '0px 16px 16px #7a69a6'
+            'text-shadow': '0px 16px 16px #e62429'
         }
     })
 })
