@@ -25,7 +25,7 @@ const GameList = ({ yesterdayPlacement }) => {
 
     const container = useMemo(() => {
         const _container = {
-            hidden: { opacity: 1, scale: 0 },
+            hidden: { opacity: 1, scale: isNew ? 0 : 1 },
             visible: {
                 opacity: 1,
                 scale: 1,
