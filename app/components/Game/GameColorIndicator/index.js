@@ -4,7 +4,7 @@ import { useState, useEffect, useCallback } from 'react'
 import { useCharacters } from '@/store/actions/game'
 import { XIcon } from 'lucide-react'
 import useLocaleClient from '@/hooks/useLocaleClient'
-import Tooltip from '../../Tooltip'
+import Tooltip from '@/components/Tooltip'
 import { getLocalStorage, setLocalStorage } from '@/actions/localStorage'
 
 const GameColorIndicator = () => {

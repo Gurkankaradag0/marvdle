@@ -2,7 +2,7 @@
 
 import { useLoading, useStats } from '@/store/actions/game'
 import { FlameIcon } from 'lucide-react'
-import Tooltip from '../../Tooltip'
+import Tooltip from '@/components/Tooltip'
 import useLocaleClient from '@/hooks/useLocaleClient'
 import classNames from 'classnames'
 

@@ -6,8 +6,6 @@ import Modal from '../Modal'
 import Highlight from '../Highlight'
 import classNames from 'classnames'
 import Timer from '../Timer'
-import GameListItem from '../Game/GameList/GameListItem'
-import GameListCharacterItem from '../Game/GameList/GameListCharacterItem'
 import Tooltip from '../Tooltip'
 import GameListSoloItem from '../Game/GameList/GameListSoloItem'
 

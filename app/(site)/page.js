@@ -1,4 +1,4 @@
-import HomeContainer from '../containers/Home/HomeContainer'
+import HomeContainer from '@/containers/Home/HomeContainer'
 
 const HomePage = async () => {
     return <HomeContainer />

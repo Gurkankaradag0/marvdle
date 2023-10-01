@@ -1,8 +1,8 @@
 'use client'
 
-import { useState, useMemo } from 'react'
+import { useState, useMemo, memo } from 'react'
 import CopyToClipboard from 'react-copy-to-clipboard'
-import RectangleButton from '../../RectangleButton'
+import RectangleButton from '@/components/RectangleButton'
 import { TwitterIcon, ClipboardCopyIcon } from 'lucide-react'
 import useLocaleClient from '@/hooks/useLocaleClient'
 import { useCharacters } from '@/store/actions/game'
@@ -104,4 +104,4 @@ const Share = ({ yesterdayPlacement }) => {
     )
 }
 
-export default Share
+export default memo(Share)

@@ -10,7 +10,7 @@ import useLocaleClient from '@/hooks/useLocaleClient'
 
 import GameListItem from './GameListItem'
 import GameListCharacterItem from './GameListCharacterItem'
-import Tooltip from '../../Tooltip'
+import Tooltip from '@/components/Tooltip'
 import GameListMore from './GameListMore'
 import { setIsCompleted, setIsNew, useIsNew } from '@/store/actions/animation'
 

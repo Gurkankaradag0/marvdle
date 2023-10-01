@@ -1,7 +1,7 @@
 'use client'
 
 import { SET } from '@/actions/cookies'
-import Popover from '../../Popover'
+import Popover from '@/components/Popover'
 import { ChevronDown } from 'lucide-react'
 import { ChevronUp } from 'lucide-react'
 import langs from '@/locales/langs'

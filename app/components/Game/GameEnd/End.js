@@ -1,11 +1,12 @@
 'use client'
 
 import { useCharacters, usePlacement } from '@/store/actions/game'
-import Timer from '../../Timer'
+import Timer from '@/components/Timer'
 import useLocaleClient from '@/hooks/useLocaleClient'
 import Image from 'next/image'
-import Highlight from '../../Highlight'
+import Highlight from '@/components/Highlight'
 import { replacePlaceholders } from '@/utils/helpers'
+import { memo } from 'react'
 
 const End = () => {
     const placement = usePlacement()
@@ -15,41 +16,25 @@ const End = () => {
         <div className='text-xs font-semibold border-solid border-2 rounded-lg relative before:absolute before:w-full before:h-full before:top-0 before:left-0 before:bg-marvel-black before:bg-opacity-30 hover:before:bg-opacity-10 before:duration-200 before:transition-all border-marvel-gray bg-gradient-to-b from-marvel-blue to-marvel-black flex flex-col items-center justify-center text-center py-10 px-10'>
             <div className='z-10 flex flex-col justify-center items-center gap-2'>
                 <div className={`text-4xl mb-4 w-full max-[500px]:flex max-[500px]:flex-col max-[500px]:justify-center max-[500px]:items-center`}>
-                    {characters.length === 1 && (
-                        <>
-                            {/* <NextImage
-                                alt='First Shot'
-                                src={FirstShotPNG}
-                                className='scale-x-[-1] w-20 inline align-middle'
-                                width={80}
-                                loading='lazy'
-                            /> */}
-                            {locale.game_end.end.oneshot}
-                            {/* <NextImage
-                                alt='First Shot'
-                                src={FirstShotPNG}
-                                className='w-20 inline align-middle max-[500px]:hidden'
-                                width={80}
-                                loading='lazy'
-                            /> */}
-                        </>
-                    )}
+                    {characters.length === 1 && locale.game_end.end.oneshot}
                     {characters.length !== 1 && `${locale.game_end.end.endList[Math.floor(Math.random() * locale.game_end.end.endList.length)]}`}
                 </div>
                 <div className='flex justify-center items-center gap-4'>
-                    <Image
-                        className='rounded-md border-solid border-marvel-red border-2'
-                        width={60}
-                        height={60}
-                        alt={`${characters[0].name} square image`}
-                        src={`https://cdn.marvel.com/content/1x/${characters[0].imgName}`}
-                        loading='lazy'
-                        style={{
-                            width: '100%',
-                            height: 'auto'
-                        }}
-                        draggable={false}
-                    />
+                    <div className='rounded-md border-marvel-gray/[0.5] hover:border-marvel-gray transition-colors border overflow-hidden h-[89.25px]'>
+                        <Image
+                            width={128}
+                            height={128}
+                            alt={`${characters[0].name} square image`}
+                            src={`https://cdn.marvel.com/content/1x/${characters[0].imgName}`}
+                            loading='lazy'
+                            quality={100}
+                            style={{
+                                width: 'auto',
+                                height: '100%'
+                            }}
+                            draggable={false}
+                        />
+                    </div>
                     <div className='leading-none'>
                         <span className='whitespace-nowrap'>{locale.game_end.end.youguessed}</span>
                         <div className='font-bold text-xl'>{characters[0].name}</div>
@@ -80,4 +65,4 @@ const End = () => {
     )
 }
 
-export default End
+export default memo(End)

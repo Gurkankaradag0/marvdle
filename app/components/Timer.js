@@ -2,7 +2,7 @@
 import { useState, useEffect, Fragment } from 'react'
 import { useTimer } from 'react-timer-hook'
 import classNames from 'classnames'
-import useLocaleClient from '../hooks/useLocaleClient'
+import useLocaleClient from '@/hooks/useLocaleClient'
 
 const Timer = () => {
     const [hour, setHour] = useState([0, 0])

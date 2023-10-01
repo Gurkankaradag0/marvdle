@@ -1,4 +1,4 @@
-import Info from '../../Modals/Info'
+import Info from '@/components/Modals/Info'
 
 const GameFooter = () => {
     return (

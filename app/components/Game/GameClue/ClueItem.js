@@ -4,7 +4,7 @@ import { useState, useEffect, useRef } from 'react'
 import { getClue } from '@/actions/game'
 import { useCharacters, usePlacement } from '@/store/actions/game'
 import { ImageIcon } from 'lucide-react'
-import Tooltip from '../../Tooltip'
+import Tooltip from '@/components/Tooltip'
 import { useIsCompleted } from '@/store/actions/animation'
 
 const ClueItem = ({ tooltipText, clueTextDisabled, clueText, clueCount }) => {
