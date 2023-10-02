@@ -41,6 +41,7 @@ const GameListCharacterItem = ({ name, imgName }) => {
             >
                 <span
                     ref={textRef}
+                    className='whitespace-nowrap text-center'
                     style={{
                         transform: `scale(${scale})`
                     }}
