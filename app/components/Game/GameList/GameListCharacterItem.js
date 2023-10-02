@@ -22,7 +22,7 @@ const GameListCharacterItem = ({ name, imgName }) => {
     }, [name])
 
     return (
-        <div className='relative group rounded-md m-0.5 basis-[calc(14.28%_-_4px)] border border-marvel-gray select-none overflow-hidden'>
+        <div className='relative group rounded-md m-0.5 basis-[calc(14.28%_-_4px)] border border-marvel-gray select-none overflow-hidden max-h-[85.25px] min-h-[85.25px] h-[85.25px]'>
             <Image
                 alt={`${name} square image`}
                 src={`https://cdn.marvel.com/content/1x/${imgName}`}
