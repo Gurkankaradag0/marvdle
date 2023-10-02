@@ -30,7 +30,7 @@ const GameListCharacterItem = ({ name, imgName }) => {
                 height={128}
                 quality={100}
                 style={{
-                    width: 'auto',
+                    width: '100%',
                     height: '100%'
                 }}
                 draggable={false}
