@@ -119,7 +119,7 @@ const Statistics = () => {
             <Modal.Button className='flex justify-center items-center'>
                 <Tooltip.Item text={locale.tooltips.statistics}>
                     <BarChart2
-                        className='text-marvel-gray hover:text-white'
+                        className='text-marvel-gray hover:text-white transition-colors'
                         strokeWidth={4}
                         size={42}
                     />

@@ -16,7 +16,7 @@ const Help = ({ children }) => {
             <Modal.Button className='flex justify-center items-center'>
                 <Tooltip.Item text={locale.tooltips.how2play}>
                     <HelpCircle
-                        className='text-marvel-gray hover:text-white'
+                        className='text-marvel-gray hover:text-white transition-colors'
                         strokeWidth={3}
                         size={42}
                     />

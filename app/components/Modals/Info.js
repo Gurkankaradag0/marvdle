@@ -54,7 +54,7 @@ const Info = () => {
         <Modal>
             <Modal.Button className='flex justify-center items-center'>
                 <InfoIcon
-                    className='text-marvel-gray hover:text-white'
+                    className='text-marvel-gray hover:text-white transition-colors'
                     strokeWidth={2.5}
                     size={64}
                 />

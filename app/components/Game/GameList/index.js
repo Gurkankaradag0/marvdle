@@ -13,6 +13,8 @@ import GameListCharacterItem from './GameListCharacterItem'
 import Tooltip from '@/components/Tooltip'
 import GameListMore from './GameListMore'
 import { setIsCompleted, setIsNew, useIsNew } from '@/store/actions/animation'
+import { useUnitOfHeight, useUnitOfWeight } from '@/store/actions/settings'
+import { inchToFt_in, inchToMetre, lbToKg } from '@/utils/helpers'
 
 const GameList = ({ yesterdayPlacement }) => {
     const characters = useCharacters()
@@ -22,6 +24,8 @@ const GameList = ({ yesterdayPlacement }) => {
     const stats = useStats()
     const version = useVersion()
     const isNew = useIsNew()
+    const unitOfHeight = useUnitOfHeight()
+    const unitOfWeight = useUnitOfWeight()
 
     const container = useMemo(() => {
         const _container = {
@@ -72,8 +76,10 @@ const GameList = ({ yesterdayPlacement }) => {
                                 key={key}
                                 text={locale.tooltips[alignment]}
                             >
-                                <div className='select-none h-[84px] relative flex justify-center items-center leading-none text-center m-0.5 basis-[calc(14.28%_-_0.25rem)] text-sm font-semibold'>
+                                <div className='select-none h-[84px] relative flex justify-center items-center leading-2 text-center m-0.5 basis-[calc(14.28%_-_0.25rem)] text-sm font-semibold'>
                                     {locale.game_alignments[alignment]}
+                                    {alignment === 'height' && ` (${unitOfHeight})`}
+                                    {alignment === 'weight' && ` (${unitOfWeight})`}
                                     <hr className='absolute top-[80%] border-t-2 border-marvel-red w-4/5 left-1/2 -translate-x-1/2' />
                                 </div>
                             </Tooltip.Item>
@@ -111,12 +117,12 @@ const GameList = ({ yesterdayPlacement }) => {
                                 variants={item}
                             />
                             <GameListItem
-                                texts={[character.height.replace('.', "'")]}
+                                texts={[unitOfHeight === "ft'in" ? inchToFt_in(character.height) : inchToMetre(character.height).toFixed(2)]}
                                 compare={character?.compare?.[3] || true}
                                 variants={item}
                             />
                             <GameListItem
-                                texts={[character.weight]}
+                                texts={[unitOfWeight === 'lbs' ? character.weight : Math.floor(lbToKg(character.weight))]}
                                 compare={character?.compare?.[4] || true}
                                 variants={item}
                             />

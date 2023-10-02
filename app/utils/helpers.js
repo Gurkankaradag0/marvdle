@@ -19,4 +19,16 @@ const twitterShare = (data) => {
     if (typeof window !== 'undefined') window.open(twitterHref, '_blank')
 }
 
-export { replacePlaceholders, replaceToEmoji, twitterShare }
+const inchToFt_in = (inch) => {
+    return `${Math.trunc(inch / 12)}'${inch % 12}`
+}
+
+const inchToMetre = (inch) => {
+    return inch * 0.0254
+}
+
+const lbToKg = (lb) => {
+    return lb * 0.45359237
+}
+
+export { replacePlaceholders, replaceToEmoji, twitterShare, inchToFt_in, inchToMetre, lbToKg }

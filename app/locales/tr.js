@@ -28,6 +28,7 @@ export default {
     tooltips: {
         statistics: 'İstatistikler',
         currentStreak: 'Mevcut Seri\n(günlük ardışık galibiyetler)',
+        settings: 'Ayarlar',
         how2play: 'Nasıl Oynanır?',
         partial: 'Bir veya daha fazla özellik doğru ancak hepsi doğru değil',
         character: 'Karakter Görseli.',
@@ -40,6 +41,11 @@ export default {
         imageClue: 'Karakter görselinin bulanık versiyonu.'
     },
     modals: {
+        settings: {
+            title: 'Ayarlar',
+            unitOfHeight: 'Uzunluk birimi',
+            unitOfWeight: 'Ağırlık birimi'
+        },
         info: {
             about: {
                 title: 'Hakkında',

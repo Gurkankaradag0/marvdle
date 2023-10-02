@@ -28,6 +28,7 @@ export default {
     tooltips: {
         statistics: 'Stats',
         currentStreak: 'Current Streak\n(daily consecutive wins)',
+        settings: 'Settings',
         how2play: 'How to Play?',
         partial: 'One or more properties are correct, but not all',
         character: 'Character Image.',
@@ -40,6 +41,11 @@ export default {
         imageClue: 'Blurred version of the character image.'
     },
     modals: {
+        settings: {
+            title: 'Settings',
+            unitOfHeight: 'Unit of Height',
+            unitOfWeight: 'Unit of Weight'
+        },
         info: {
             about: {
                 title: 'About',
