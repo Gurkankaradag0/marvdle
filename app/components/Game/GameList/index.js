@@ -103,32 +103,32 @@ const GameList = ({ yesterdayPlacement }) => {
                             />
                             <GameListItem
                                 texts={[locale.game_alignments[character.gender]]}
-                                compare={character?.compare?.[0] || true}
+                                compare={character?.compare?.[0] ?? true}
                                 variants={item}
                             />
                             <GameListItem
                                 texts={character.race.map((race) => locale.game_alignments[race])}
-                                compare={character?.compare?.[1] || true}
+                                compare={character?.compare?.[1] ?? true}
                                 variants={item}
                             />
                             <GameListItem
                                 texts={[locale.game_alignments[character.alignment]]}
-                                compare={character?.compare?.[2] || true}
+                                compare={character?.compare?.[2] ?? true}
                                 variants={item}
                             />
                             <GameListItem
                                 texts={[unitOfHeight === "ft'in" ? inchToFt_in(character.height) : inchToMetre(character.height).toFixed(2)]}
-                                compare={character?.compare?.[3] || true}
+                                compare={character?.compare?.[3] ?? true}
                                 variants={item}
                             />
                             <GameListItem
                                 texts={[unitOfWeight === 'lbs' ? character.weight : Math.floor(lbToKg(character.weight))]}
-                                compare={character?.compare?.[4] || true}
+                                compare={character?.compare?.[4] ?? true}
                                 variants={item}
                             />
                             <GameListItem
                                 texts={[character.firstAppearance]}
-                                compare={character?.compare?.[5] || true}
+                                compare={character?.compare?.[5] ?? true}
                                 variants={item}
                             />
                         </motion.li>
