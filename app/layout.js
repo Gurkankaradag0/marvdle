@@ -7,6 +7,8 @@ import StoreProvider from './contexts/StoreProvider'
 import TooltipProvider from './contexts/TooltipProvider'
 import locales from './locales'
 
+import { Analytics } from '@vercel/analytics/react'
+
 const inter = Poppins({ weight: ['100', '200', '300', '400', '500', '600', '700', '800', '900'], subsets: ['latin', 'latin-ext'] })
 
 export const generateMetadata = async () => {
@@ -31,6 +33,7 @@ const RootLayout = ({ children }) => {
                         <HomeLayoutContainer>{children}</HomeLayoutContainer>
                     </TooltipProvider>
                 </StoreProvider>
+                <Analytics />
             </body>
         </html>
     )
