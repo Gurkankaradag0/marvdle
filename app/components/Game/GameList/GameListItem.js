@@ -46,6 +46,7 @@ const GameListItem = ({ texts, compare, variants }) => {
                     <span
                         ref={textRef}
                         key={i}
+                        className='text-center whitespace-nowrap'
                         style={{
                             transform: `scale(${scale})`
                         }}
