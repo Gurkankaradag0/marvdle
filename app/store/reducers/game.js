@@ -1,5 +1,5 @@
 import { getCharacterDetail } from '@/actions/game'
-import { getLocalStorage, removeLocalStorage, setLocalStorage } from '@/actions/localStorage'
+import { getLocalStorage, setLocalStorage } from '@/actions/localStorage'
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 
 export const _getCharacters = createAsyncThunk('game/getCharacters', async () => {
@@ -21,7 +21,7 @@ const initialStats = {
 }
 
 const initialState = {
-    version: 'v0.0.1',
+    version: 'v1.0.0',
     characters: [],
     loading: true,
     gamenumero: getLocalStorage('gamenumero') || 0,
