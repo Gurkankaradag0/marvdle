@@ -13,28 +13,26 @@ const GameListSoloItem = ({ character, imgName, compares, texts }) => {
     const locale = useLocaleClient()
 
     const items = useMemo(() => {
-        return texts.map(function (text, i) {
+        return texts.map((text, i) => {
             return [text, compares[i]]
         })
     }, [compares, texts])
 
     return (
         <div className='flex flex-col justify-center items-center gap-2 w-full'>
-            <div className='w-full max-[600px]:overflow-x-scroll scroller'>
-                <div className='flex flex-col justify-center items-center gap-2 w-full max-[600px]:w-[165%]'>
-                    <div className='flex flex-wrap w-full'>
-                        <GameListCharacterItem
-                            name={character}
-                            imgName={imgName}
+            <div className='w-full overflow-x-scroll scroller'>
+                <div className='flex flex-wrap w-[553.34px]'>
+                    <GameListCharacterItem
+                        name={character}
+                        imgName={imgName}
+                    />
+                    {items.map(([text, compare], i) => (
+                        <GameListItem
+                            key={i}
+                            texts={text}
+                            compare={compare}
                         />
-                        {items.map(([text, compare], i) => (
-                            <GameListItem
-                                key={i}
-                                texts={text}
-                                compare={compare}
-                            />
-                        ))}
-                    </div>
+                    ))}
                 </div>
             </div>
             {isMobile && (
