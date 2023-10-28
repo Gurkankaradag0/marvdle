@@ -156,7 +156,7 @@ const Help = ({ children }) => {
                                     imgName='034wlv_com_crd_01.jpg'
                                     texts={[
                                         [locale.game_alignments.male],
-                                        ['human', 'mutant'].map((race) => locale.game_alignments[race]),
+                                        ['mutant'].map((race) => locale.game_alignments[race]),
                                         [locale.game_alignments.good],
                                         ["5'3"],
                                         [300],
