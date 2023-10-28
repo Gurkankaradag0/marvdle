@@ -6,6 +6,7 @@ import GameListItem from './GameListItem'
 import { MoveLeftIcon, MoveRightIcon } from 'lucide-react'
 import { useWindowSize } from 'react-use'
 import useLocaleClient from '@/hooks/useLocaleClient'
+import { isMobile } from 'react-device-detect'
 
 const GameListSoloItem = ({ character, imgName, compares, texts }) => {
     const { width } = useWindowSize()
@@ -36,17 +37,19 @@ const GameListSoloItem = ({ character, imgName, compares, texts }) => {
                     </div>
                 </div>
             </div>
-            <div className='min-[600px]:hidden flex justify-center select-none cursor-default items-center gap-1 max-[460px]:text-xs text-marvel-gray'>
-                <MoveLeftIcon
-                    size={width < 420 ? 14 : 18}
-                    strokeWidth={2}
-                />
-                {locale.more_scroll}
-                <MoveRightIcon
-                    size={width < 420 ? 14 : 18}
-                    strokeWidth={2}
-                />
-            </div>
+            {isMobile && (
+                <div className='min-[600px]:hidden flex justify-center select-none cursor-default items-center gap-1 max-[460px]:text-xs text-marvel-gray'>
+                    <MoveLeftIcon
+                        size={width < 420 ? 14 : 18}
+                        strokeWidth={2}
+                    />
+                    {locale.more_scroll}
+                    <MoveRightIcon
+                        size={width < 420 ? 14 : 18}
+                        strokeWidth={2}
+                    />
+                </div>
+            )}
         </div>
     )
 }
