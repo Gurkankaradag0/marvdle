@@ -199,7 +199,11 @@ export default {
         mutant: 'Mutant',
         radiation: 'Radiation',
         god: 'God',
-        eternal: 'Eternal'
+        eternal: 'Eternal',
+        alien: 'Alien',
+        other: 'Other',
+        robot: 'Robot',
+        cyborg: 'Cyborg'
     },
     game_end: {
         end: {

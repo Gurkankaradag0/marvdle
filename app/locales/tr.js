@@ -199,7 +199,11 @@ export default {
         mutant: 'Mutant',
         radiation: 'Radyasyon',
         god: 'Tanrı',
-        eternal: 'Ölümsüz'
+        eternal: 'Ölümsüz',
+        alien: 'Uzaylı',
+        other: 'Diğer',
+        robot: 'Robot',
+        cyborg: 'Yarı Robot'
     },
     game_end: {
         end: {
