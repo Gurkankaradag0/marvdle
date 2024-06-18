@@ -3,7 +3,8 @@ const robots = () => {
         rules: {
             userAgent: '*',
             disallow: ''
-        }
+        },
+        sitemap: 'https://marvdle.npoq.net/sitemap.xml'
     }
 }
 

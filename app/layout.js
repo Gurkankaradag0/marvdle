@@ -16,7 +16,12 @@ export const generateMetadata = async () => {
     const lang = cookies().get('lang')?.value ?? defaultLocale
     return {
         title: 'Marvdle',
-        description: locales[lang].description
+        description: locales[lang].description,
+        robots: {
+            index: false,
+            follow: true,
+            nochache: true
+        }
     }
 }
 
